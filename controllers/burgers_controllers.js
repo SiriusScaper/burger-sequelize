@@ -1,13 +1,23 @@
 const express = require('express');
 const router = express.Router();
-const burger = require('../models/burger');
+const Burgers = require('../models/burger');
 
-router.get('/', (req, res) => {
-	burger.selectAll(burger => {
-		console.log(burger);
+app.get('/api/all', (req, res) => {
+	let dbQuery = 'SELECT * FROM Burgers';
+	connection.queury(dbQuery, (err, res) => {
+		if (err) throw err;
 		res.render('index', { burgers: burger });
 	});
 });
+
+// router.get('/', (req, res) => {
+// 	burger.selectAll(burger => {
+// 		console.log(burger);
+// 		res.render('index', { burgers: burger });
+// 	});
+// });
+
+app.post();
 
 router.post('/api/burgers', (req, res) => {
 	console.log(req.body);
