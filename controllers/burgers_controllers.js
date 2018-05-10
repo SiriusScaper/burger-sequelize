@@ -3,11 +3,7 @@ const router = express.Router();
 const Burgers = require('../models/burger');
 
 app.get('/api/all', (req, res) => {
-	let dbQuery = 'SELECT * FROM Burgers';
-	connection.queury(dbQuery, (err, res) => {
-		if (err) throw err;
-		res.render('index', { burgers: burger });
-	});
+	Burgers.findAll().then(res);
 });
 
 // router.get('/', (req, res) => {
@@ -17,7 +13,7 @@ app.get('/api/all', (req, res) => {
 // 	});
 // });
 
-app.post();
+app.post('/api/burgers', (req, res) => {});
 
 router.post('/api/burgers', (req, res) => {
 	console.log(req.body);
